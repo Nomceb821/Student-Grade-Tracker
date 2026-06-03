@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="dashboard-card">
+
+        <h1>Dashboard</h1>
+
+        <p>Welcome Teacher!</p>
+
+        <div class="dashboard-grid">
+
+            <a href="students.html" class="dashboard-btn">
+                👨‍🎓 Students
+            </a>
+
+            <a href="subjects.html" class="dashboard-btn">
+                📚 Subjects
+            </a>
+
+            <a href="#" class="dashboard-btn">
+                📝 Grades
+            </a>
+
+            <a href="#" class="dashboard-btn">
+                📅 Attendance
+            </a>
+
+        </div>
+
+        <button id="logoutBtn">
+            Logout
+        </button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+
+    <script>
+        document
+            .getElementById("logoutBtn")
+            .addEventListener(
+                "click",
+                async () => {
+
+                    await supabaseClient.auth.signOut();
+
+                    window.location.href =
+                        "index.html";
+                }
+            );
+    </script>
+
+</body>
+</html>

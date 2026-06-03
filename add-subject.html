@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Subject</title>
+
+        <link rel="stylesheet" href="css/style.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <div class="login-card">
+
+                <h1>Add Subject</h1>
+
+                <form id="subjectForm">
+
+                    <input
+                        type="text"
+                        id="subjectName"
+                        placeholder="Subject Name"
+                        required
+                    >
+
+                    <input
+                        type="text"
+                        id="description"
+                        placeholder="Description"
+                    >
+
+                    <button type="submit">
+                        Save Subject
+                    </button>
+
+                </form>
+
+                <p id="message"></p>
+
+                <a href="subjects.html" class="back-link">
+                    ← Back to Subjects
+                </a>
+
+            </div>
+
+        </div>
+
+        <script src="js/supabase.js"></script>
+        <script src="js/add-subject.js"></script>
+
+    </body>
+</html>
