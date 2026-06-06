@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Grade</title>
+
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    </head>
+    <body>
+
+        <div class="login-card">
+
+            <h1>Add Grade</h1>
+
+            <form id="gradeForm">
+
+                <select id="studentSelect" required>
+                    <option value="">
+                        Select Student
+                    </option>
+                </select>
+
+                <select id="subjectSelect" required>
+                    <option value="">
+                        Select Subject
+                    </option>
+                </select>
+
+                <input
+                    type="number"
+                    id="grade"
+                    min="0"
+                    max="100"
+                    placeholder="Grade"
+                    required
+                >
+                <select id="term" required>
+                    <option value="">Select Term</option>
+                    <option value="Term 1">Term 1</option>
+                    <option value="Term 2">Term 2</option>
+                    <option value="Term 3">Term 3</option>
+                    <option value="Term 4">Term 4</option>
+                </select>
+
+                <button type="submit">
+                    Save Grade
+                </button>
+
+            </form>
+
+            <p id="message"></p>
+
+            <a href="grades.html">
+                Back to Grades
+            </a>
+
+        </div>
+
+        <script src="js/supabase.js"></script>
+        <script src="js/add-grade.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Report Card</title>
+
+        <link rel="stylesheet" href="css/style.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    </head>
+    <body>
+
+    <div class="report-card">
+
+        <!-- HEADER -->
+
+        <div class="report-header">
+
+    <img
+        src="images/school-logo.png"
+        alt="School Logo"
+        class="school-logo"
+    >
+
+    <div class="header-divider"></div>
+
+    <div>
+
+        <div class="header-text">
+
+            <h1>Nomcebo Academy</h1>
+
+            <h3>Student Academic Report</h3>
+
+        </div>
+
+        <div class="student-info">
+
+            <p>
+                <strong>Name:</strong>
+                <span id="studentName"></span>
+            </p>
+
+            <p>
+                <strong>Grade:</strong>
+                <span id="studentGrade"></span>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+        <hr class="report-line">
+
+        <!-- REPORT TITLE -->
+
+        <h1 class="report-title">
+            Academic Report
+        </h1>
+
+        <div class="report-meta">
+
+            <p>
+                <strong>Academic Year:</strong>
+                2026
+            </p>
+
+           <p>
+                <strong>Term:</strong>
+
+                <select id="termFilter">
+                    <option value="Term 1">Term 1</option>
+                    <option value="Term 2">Term 2</option>
+                    <option value="Term 3">Term 3</option>
+                    <option value="Term 4">Term 4</option>
+                </select>
+            </p>
+
+        </div>
+
+        <!-- SUBJECT TABLE -->
+
+        <table id="reportTable">
+
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Class Average</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+
+            <tbody></tbody>
+
+        </table>
+
+        <!-- AVERAGE -->
+
+        <div class="average-section">
+
+            <strong>Learner's Average:</strong>
+
+            <span id="averageGrade"></span>
+
+        </div>
+
+        <!-- COMMENTS -->
+
+        <div class="comments-section">
+
+            <h3>Teacher's Comment:</h3>
+
+            <p id="teacherComment"></p>
+
+        </div>
+
+        <!-- RESULT -->
+
+        <div class="result-box">
+
+            <strong>Result:</strong>
+
+            <span id="resultStatus"></span>
+
+        </div>
+
+        <br>
+
+        <div class="signature-section">
+
+            <div class="signature-box">
+
+                <p>Teacher Signature</p>
+
+                <div class="signature-line"></div>
+
+            </div>
+
+            <div class="signature-box">
+
+                <p>Principal Signature</p>
+
+                <div class="signature-line"></div>
+
+            </div>
+
+        </div>
+
+        <a href="students.html" class="add-student-btn">
+            Back to Students
+        </a>
+
+    </div>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/student-report.js"></script>
+
+</body>
+</html>

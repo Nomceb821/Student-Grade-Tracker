@@ -35,6 +35,12 @@ function renderStudents(studentList) {
                         onclick="deleteStudent('${student.id}')">
                         Delete
                     </button>
+
+                    <button
+                        class="report-btn"
+                        onclick="viewReportCard('${student.id}')">
+                        Report Card
+                    </button>
                 </div>
             </td>
         `;
@@ -123,6 +129,14 @@ document
             );
 
         renderStudents(filteredStudents);
-    });
+});
+
+//Report cards
+
+function viewReportCard(id) {
+
+    window.location.href =
+        `student-report.html?id=${id}`;
+}
 
     

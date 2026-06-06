@@ -1,42 +1,52 @@
-let subjects = [];
+let grades = [];
 
 const tableBody =
-    document.querySelector("#subjectsTable tbody");
+    document.querySelector("#gradesTable tbody");
 
 
-// DISPLAY SUBJECTS
-function renderSubjects(subjectList) {
+// DISPLAY GRADES
+function renderGrades(gradeList) {
 
     tableBody.innerHTML = "";
 
-    subjectList.forEach(subject => {
+    gradeList.forEach(grade => {
 
         const row =
             document.createElement("tr");
 
         row.innerHTML = `
-            <td>${subject.subject_name}</td>
+            <td>
+                ${grade.students.first_name}
+                ${grade.students.last_name}
+            </td>
 
-            <td>${subject.description || ""}</td>
+            <td>
+                ${grade.subjects.subject_name}
+            </td>
+
+            <td>
+                ${grade.grade}
+            </td>
+            <td>${grade.term}</td>
 
             <td>
                 <div class="action-buttons">
 
                     <button
                         class="view-btn"
-                        onclick="viewSubject('${subject.id}')">
+                        onclick="viewGrade('${grade.id}')">
                         View
                     </button>
 
                     <button
                         class="edit-btn"
-                        onclick="editSubject('${subject.id}')">
+                        onclick="editGrade('${grade.id}')">
                         Edit
                     </button>
 
                     <button
                         class="delete-btn"
-                        onclick="deleteSubject('${subject.id}')">
+                        onclick="deleteGrade('${grade.id}')">
                         Delete
                     </button>
 
@@ -49,29 +59,37 @@ function renderSubjects(subjectList) {
 }
 
 
-// LOAD SUBJECTS
-async function loadSubjects() {
+// LOAD GRADES
+async function loadGrades() {
 
     const { data, error } =
         await supabaseClient
-            .from("subjects")
-            .select("*")
-            .order("subject_name");
+            .from("grades")
+            .select(`
+                *,
+                students (
+                    first_name,
+                    last_name
+                ),
+                subjects (
+                    subject_name
+                )
+            `);
 
     if (error) {
         console.error(error);
         return;
     }
 
-    subjects = data;
+    grades = data;
 
-    renderSubjects(subjects);
+    renderGrades(grades);
 }
 
-loadSubjects();
+loadGrades();
 
 
-// SEARCH SUBJECTS
+// SEARCH
 const searchInput =
     document.getElementById("searchInput");
 
@@ -84,39 +102,40 @@ if (searchInput) {
             const search =
                 e.target.value.toLowerCase();
 
-            const filteredSubjects =
-                subjects.filter(subject =>
+            const filteredGrades =
+                grades.filter(grade =>
 
-                    subject.subject_name
+                    `${grade.students.first_name}
+                     ${grade.students.last_name}`
                         .toLowerCase()
                         .includes(search)
 
                     ||
 
-                    (subject.description || "")
+                    grade.subjects.subject_name
                         .toLowerCase()
                         .includes(search)
                 );
 
-            renderSubjects(filteredSubjects);
+            renderGrades(filteredGrades);
         }
     );
 }
 
 
-// DELETE SUBJECT
-async function deleteSubject(id) {
+// DELETE
+async function deleteGrade(id) {
 
     const confirmDelete =
         confirm(
-            "Are you sure you want to delete this subject?"
+            "Are you sure you want to delete this grade?"
         );
 
     if (!confirmDelete) return;
 
     const { error } =
         await supabaseClient
-            .from("subjects")
+            .from("grades")
             .delete()
             .eq("id", id);
 
@@ -127,21 +146,21 @@ async function deleteSubject(id) {
         return;
     }
 
-    loadSubjects();
+    loadGrades();
 }
 
 
-// VIEW SUBJECT
-function viewSubject(id) {
+// VIEW
+function viewGrade(id) {
 
     window.location.href =
-        `subject-details.html?id=${id}`;
+        `grade-details.html?id=${id}`;
 }
 
 
-// EDIT SUBJECT
-function editSubject(id) {
+// EDIT
+function editGrade(id) {
 
     window.location.href =
-        `edit-subject.html?id=${id}`;
+        `edit-grade.html?id=${id}`;
 }

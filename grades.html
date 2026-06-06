@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grades</title>
+
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    </head>
+    <body>
+
+        <div class="students-card">
+
+            <h1>Grades</h1>
+
+            <a href="add-grade.html" class="add-student-btn">
+                + Add Grade
+            </a>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search student or subject..."
+            >
+
+            <table id="gradesTable">
+
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Subject</th>
+                        <th>Grade</th>
+                        <th>Term</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody></tbody>
+
+            </table>
+
+        </div>
+
+        <script src="js/supabase.js"></script>
+        <script src="js/grades.js"></script>
+
+    </body>
+</html>

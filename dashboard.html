@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
 
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
 
-    <div class="dashboard-card">
+        <div class="dashboard-card">
 
         <h1>Dashboard</h1>
 
-        <p>Welcome Teacher!</p>
+        <div class="stats-grid">
 
-        <div class="dashboard-grid">
+            <div class="stat-card">
+                <h3>Students</h3>
+                <p id="studentCount">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Subjects</h3>
+                <p id="subjectCount">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Grades</h3>
+                <p id="gradeCount">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Average Grade</h3>
+                <p id="averageGrade">0%</p>
+            </div>
+
+        </div>
+
+        <div class="dashboard-links">
 
             <a href="students.html" class="dashboard-btn">
-                👨‍🎓 Students
+                Students
             </a>
 
             <a href="subjects.html" class="dashboard-btn">
-                📚 Subjects
+                Subjects
             </a>
 
-            <a href="#" class="dashboard-btn">
-                📝 Grades
-            </a>
-
-            <a href="#" class="dashboard-btn">
-                📅 Attendance
+            <a href="grades.html" class="dashboard-btn">
+                Grades
             </a>
 
         </div>
@@ -40,24 +58,24 @@
         </button>
 
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="js/supabase.js"></script>
+        <script src="js/dashboard.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase.js"></script>
+        <script>
+            document
+                .getElementById("logoutBtn")
+                .addEventListener(
+                    "click",
+                    async () => {
 
-    <script>
-        document
-            .getElementById("logoutBtn")
-            .addEventListener(
-                "click",
-                async () => {
+                        await supabaseClient.auth.signOut();
 
-                    await supabaseClient.auth.signOut();
+                        window.location.href =
+                            "index.html";
+                    }
+                );
+        </script>
 
-                    window.location.href =
-                        "index.html";
-                }
-            );
-    </script>
-
-</body>
+    </body>
 </html>

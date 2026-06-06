@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit Grade</title>
+
+        <link rel="stylesheet" href="css/style.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <div class="login-card">
+
+                <h1>Edit Grade</h1>
+
+                <form id="editGradeForm">
+
+                    <select id="studentSelect" required></select>
+
+                    <select id="subjectSelect" required></select>
+
+                    <input
+                        type="number"
+                        id="grade"
+                        min="0"
+                        max="100"
+                        required
+                    >
+
+                    <button type="submit">
+                        Update Grade
+                    </button>
+
+                </form>
+
+                <p id="message"></p>
+
+            </div>
+
+        </div>
+
+        <script src="js/supabase.js"></script>
+        <script src="js/edit-grade.js"></script>
+
+    </body>
+</html>
