@@ -22,6 +22,13 @@ body {
 
 /*Dashboard*/
 
+.dash-board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
 .dashboard-card {
     background: white;
     padding: 2rem;
@@ -206,7 +213,6 @@ input {
     width: 100%;
     padding: 12px;
     margin-bottom: 1.5rem;
-
     border: 1px solid #ddd;
     border-radius: 8px;
 }
@@ -214,13 +220,10 @@ input {
 button {
     width: 100%;
     padding: 12px;
-
     border: none;
     border-radius: 8px;
-
     background: #2563eb;
     color: white;
-
     cursor: pointer;
 }
 
@@ -398,6 +401,13 @@ td {
 
 
 /*Grades*/
+.grade-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
 #gradesTable {
     width: 100%;
     border-collapse: collapse;
@@ -421,6 +431,36 @@ td {
     background-color: #f8fafc;
 }
 
+/*Attendance*/
+.attend{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#attendanceTable {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+#attendanceTable th {
+    background-color: #f8fafc;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+#attendanceTable td {
+    padding: 15px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#attendanceTable tr:hover {
+    background-color: #f8fafc;
+}
+
 /*Report*/
 
 .report-btn {
@@ -436,7 +476,6 @@ td {
     background-color: #7c3aed;
 }
 
-
 /* REPORT CARD */
 
 .report-card {
@@ -447,7 +486,16 @@ td {
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     max-width: 1000px;
     width: 100%;
-    overflow-x: auto;
+    overflow: visible !important;
+    box-sizing: border-box;
+}
+
+.report-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    max-width: 1000px; /* matches .report-card */
+    margin: 12px auto 30px auto;
 }
 
 .report-header {
@@ -492,6 +540,7 @@ td {
 #reportTable {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed; /* prevents columns from collapsing */
 }
 
 #reportTable th {
@@ -569,4 +618,160 @@ td {
     color: #555;
     font-size: 18px;
     font-weight: normal;
+}
+
+#downloadPdfBtn {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#downloadPdfBtn:hover {
+    background-color: #1d4ed8;
+}
+@media print {
+    @page {
+        size: A4;
+        margin: 5mm;
+    }
+
+    /* Hide everything except the report card */
+    body * {
+        visibility: hidden;
+    }
+
+    #reportCard,
+    #reportCard * {
+        visibility: visible;
+    }
+
+    #reportCard {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        box-shadow: none;
+        border-radius: 0;
+        page-break-after: avoid; /* ← add this */
+    }
+
+    /* Hide the term dropdown - show plain text instead */
+    #termFilter {
+        border: none;
+        appearance: none;
+        -webkit-appearance: none;
+        background: transparent;
+        font-size: inherit;
+        font-family: inherit;
+        pointer-events: none;
+    }
+
+    .report-actions {
+        display: none !important;
+    }
+
+    /* Prevent table rows from splitting across pages */
+    #reportTable tr {
+        page-break-inside: avoid;
+    }
+
+    /* Make sure backgrounds print */
+    #reportTable th {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Shrink everything to fit one page */
+
+    .report-title {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    .report-line {
+        margin: 10px 0;
+    }
+
+    .report-meta {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .school-logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .header-divider {
+        height: 70px;
+    }
+
+    .header-text h1 {
+        font-size: 20px;
+    }
+
+    .header-text h3 {
+        font-size: 13px;
+    }
+
+    .student-info p {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    #reportTable th,
+    #reportTable td {
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+
+    .average-section {
+        margin-top: 12px;
+        font-size: 15px;
+    }
+
+    .attendance-section {
+        margin-top: 8px;
+        font-size: 13px;
+    }
+
+    .attendance-section h3 {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .comments-section {
+        margin-top: 10px;
+        font-size: 13px;
+    }
+
+    .comments-section h3 {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .result-box {
+        margin-top: 80px;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .signature-section {
+        margin-top: 80px;
+    }
+
+    .signature-line {
+        margin-top: 40px;
+    }
+
+    .signature-box p {
+        font-size: 13px;
+    }
+
 }

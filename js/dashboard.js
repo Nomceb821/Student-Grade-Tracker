@@ -18,6 +18,17 @@ async function loadDashboardStats() {
             .from("grades")
             .select("*", { count: "exact" });
 
+    const { count: attendanceCount } =
+    await supabaseClient
+        .from("attendance")
+        .select("*", {
+            count: "exact",
+            head: true
+        });
+
+    document.getElementById("attendanceCount").textContent =
+        attendanceCount || 0;
+
     document.getElementById("studentCount").textContent =
         studentCount || 0;
 

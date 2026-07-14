@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Attendance</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="login-card">
+
+            <h1>Record Absence</h1>
+
+            <form id="attendanceForm">
+
+                <select id="studentSelect" required>
+                    <option value="">
+                        Select Student
+                    </option>
+                </select>
+
+                <input
+                    type="date"
+                    id="absenceDate"
+                    required
+                >
+
+                <select id="term" required>
+                    <option value="">
+                        Select Term
+                    </option>
+
+                    <option value="Term 1">
+                        Term 1
+                    </option>
+
+                    <option value="Term 2">
+                        Term 2
+                    </option>
+
+                    <option value="Term 3">
+                        Term 3
+                    </option>
+
+                    <option value="Term 4">
+                        Term 4
+                    </option>
+                </select>
+
+                <input
+                    type="text"
+                    id="reason"
+                    placeholder="Reason for absence"
+                >
+
+                <button type="submit">
+                    Save Absence
+                </button>
+
+            </form>
+
+            <p id="message"></p>
+
+            <a href="attendance.html" class="add-student-btn">
+                Back to Attendance
+            </a>
+
+        </div>
+
+    </div>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/add-attendance.js"></script>
+
+</body>
+</html>

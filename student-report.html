@@ -11,47 +11,47 @@
     </head>
     <body>
 
-    <div class="report-card">
+    <div class="report-card" id="reportCard">
 
         <!-- HEADER -->
 
         <div class="report-header">
 
-    <img
-        src="images/school-logo.png"
-        alt="School Logo"
-        class="school-logo"
-    >
+            <img
+                src="images/school-logo.png"
+                alt="School Logo"
+                class="school-logo"
+            >
 
-    <div class="header-divider"></div>
+            <div class="header-divider"></div>
 
-    <div>
+            <div>
 
-        <div class="header-text">
+                <div class="header-text">
 
-            <h1>Nomcebo Academy</h1>
+                    <h1>Nomcebo Academy</h1>
 
-            <h3>Student Academic Report</h3>
+                    <h3>Student Academic Report</h3>
+
+                </div>
+
+                <div class="student-info">
+
+                    <p>
+                        <strong>Name:</strong>
+                        <span id="studentName"></span>
+                    </p>
+
+                    <p>
+                        <strong>Grade:</strong>
+                        <span id="studentGrade"></span>
+                    </p>
+
+                </div>
+
+            </div>
 
         </div>
-
-        <div class="student-info">
-
-            <p>
-                <strong>Name:</strong>
-                <span id="studentName"></span>
-            </p>
-
-            <p>
-                <strong>Grade:</strong>
-                <span id="studentGrade"></span>
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
 
         <hr class="report-line">
 
@@ -68,7 +68,7 @@
                 2026
             </p>
 
-           <p>
+            <p>
                 <strong>Term:</strong>
 
                 <select id="termFilter">
@@ -104,6 +104,17 @@
             <strong>Learner's Average:</strong>
 
             <span id="averageGrade"></span>
+
+        </div>
+
+        <div class="attendance-section">
+
+            <h3>Attendance</h3>
+
+            <p>
+                Days Absent:
+                <span id="absentDays">0</span>
+            </p>
 
         </div>
 
@@ -149,13 +160,24 @@
 
         </div>
 
+    </div>
+
+    <!-- ACTIONS OUTSIDE REPORT CARD -->
+
+    <div class="report-actions">
+
         <a href="students.html" class="add-student-btn">
             Back to Students
         </a>
 
+        <button id="downloadPdfBtn">
+            Download PDF
+        </button>
+
     </div>
 
     <script src="js/supabase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="js/student-report.js"></script>
 
 </body>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="attend">
+
+    <div class="students-card">
+
+        <h1>Attendance</h1>
+
+        <a href="add-attendance.html" class="add-student-btn">
+            + Record Absence
+        </a>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search attendance..."
+        >
+
+        <table id="attendanceTable">
+
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Date</th>
+                    <th>Term</th>
+                    <th>Reason</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody></tbody>
+
+        </table>
+
+        <br>
+
+        <a href="dashboard.html" class="add-student-btn">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/attendance.js"></script>
+
+</body>
+</html>

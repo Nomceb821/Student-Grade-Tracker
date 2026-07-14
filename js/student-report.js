@@ -132,6 +132,24 @@ async function loadReportCard() {
     averageGrade.textContent =
         `${average}%`;
 
+    // ATTENDANCE
+    const { data: absences, error: attendanceError } =
+        await supabaseClient
+            .from("attendance")
+            .select("*")
+            .eq("student_id", studentId)
+            .eq("term", selectedTerm);
+
+    if (attendanceError) {
+
+        console.error(attendanceError);
+
+    } else {
+
+        document.getElementById("absentDays").textContent =
+            absences.length;
+    }
+
     // PASS / FAIL
     const resultStatus =
         document.getElementById("resultStatus");
@@ -155,4 +173,17 @@ document
     .addEventListener(
         "change",
         loadReportCard
+    );
+
+document
+    .getElementById("downloadPdfBtn")
+    .addEventListener(
+        "click",
+        async () => {
+            await loadReportCard();
+
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        }
     );
